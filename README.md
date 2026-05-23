@@ -106,4 +106,4 @@ Questions, ideas, or bug reports? Post in [Feedback & Discussion](https://github
 
 ## License
 
-MIT
+[Apache 2.0](LICENSE)
