@@ -1,0 +1,12 @@
+{
+  "name": "fcot",
+  "description": "FCoT (Falsification Chain of Thought): post-hoc verification of AI judgments via pre-declared dismissal conditions. Ships the /fcot skill.",
+  "author": {
+    "name": "1o1 Co. Ltd.",
+    "url": "https://1o1.co.jp/"
+  },
+  "homepage": "https://github.com/o3co/agent-skill-fcot",
+  "repository": "https://github.com/o3co/agent-skill-fcot",
+  "license": "Apache-2.0",
+  "keywords": ["fcot", "falsification", "anti-sycophancy", "skill", "reasoning-verification"]
+}

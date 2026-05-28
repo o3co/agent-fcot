@@ -60,10 +60,21 @@ Across [15 examples](docs/examples/): **12 / 15 (80.0%)** effectiveness — FCoT
 
 ## Install
 
+### Marketplace (recommended)
+
+If you have Claude Code with marketplace support, install via the [o3co/agent-market](https://github.com/o3co/agent-market) marketplace:
+
+```text
+/plugin marketplace add o3co/agent-market
+/plugin install fcot@agent-market
+```
+
+This adds FCoT alongside other o3co plugins (e.g. DPD) and tracks updates via `git`.
+
 ### Manual (symlink)
 
 ```bash
-git clone https://github.com/y1o1/agent-skill-fcot.git
+git clone https://github.com/o3co/agent-skill-fcot.git
 cd agent-skill-fcot
 ./install.sh
 ```

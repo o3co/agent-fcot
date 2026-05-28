@@ -60,10 +60,21 @@ FCoTなしの場合、AIはユーザーに同意する:
 
 ## インストール
 
+### Marketplace（推奨）
+
+Marketplace 対応の Claude Code を使っているなら、[o3co/agent-market](https://github.com/o3co/agent-market) marketplace 経由でインストールできる:
+
+```text
+/plugin marketplace add o3co/agent-market
+/plugin install fcot@agent-market
+```
+
+これで他の o3co plugin（例: DPD）と一緒に FCoT が入り、`git` 経由で更新される。
+
 ### 手動（シンボリックリンク）
 
 ```bash
-git clone https://github.com/y1o1/agent-skill-fcot.git
+git clone https://github.com/o3co/agent-skill-fcot.git
 cd agent-skill-fcot
 ./install.sh
 ```
