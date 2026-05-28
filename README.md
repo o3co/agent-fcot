@@ -52,11 +52,12 @@ Across [15 examples](docs/examples/): **12 / 15 (80.0%)** effectiveness — FCoT
 
 ## What to expect
 
-- FCoT is a **skill prompt**, not code — it adds no dependencies and runs no background processes
+- FCoT is a **skill prompt**, not code — no background processes
 - It activates **only when you call it** (`/fcot`) — it does not modify normal Claude Code behavior
 - Typical output: 1 table + 1 conclusion paragraph
 - **First time?** Try `/fcot quick` — same verification process, shorter output
 - Designed for **high-stakes judgment verification**, not everyday chat
+- **Optional dependency:** if [Codex CLI](https://github.com/openai/codex) is on `PATH`, FCoT uses it as a context-stripped external verifier (recommended — eliminates motivated-reasoning bias). Otherwise FCoT runs in-process and tells you so. Set `FCOT_VERIFIER=in-process` to force the in-process path. See [APPROACH.md § Production verifier](APPROACH.md#production-verifier-same-protection-extended-to-fcot) for why this matters.
 
 ## Install
 

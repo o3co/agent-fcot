@@ -87,6 +87,14 @@ Running evaluations revealed three forms of context contamination that affect FC
 
 The current evaluation protocol addresses all three: separate CLI processes from `/tmp`, `CLAUDE.md` files disabled, `--disable-slash-commands` for Control generation. See [docs/examples/](docs/examples/) for the full execution protocol.
 
+### Production verifier: same protection extended to `/fcot`
+
+The evaluation protocol that produced the 80% effectiveness result above ran each FCoT pass in a **context-isolated CLI process**, separate from the agent that produced the judgment. Until recently, the production `/fcot` skill ran in-process — the same agent that inferred the judgment also enumerated the counter-arguments and verified their dismissal. This created an architectural gap: the user-facing skill was not the configuration that the evaluation validated.
+
+The skill now defaults to **Codex CLI as an external verifier**, invoked via the file-pipe protocol (`/tmp/codex-io/`) with a context-stripped extraction bundle (verbatim claim quote + evidence pointers + one-line domain hint; no conversation history, sibling hypotheses, or prior reasoning). The same agent never both infers and falsifies a judgment unless Codex is unavailable, in which case the skill falls back to in-process verification and surfaces that fact to the user. Users can also force the fallback path explicitly with `FCOT_VERIFIER=in-process /fcot ...` — useful for debugging Codex setups, or for sanity-checking a verdict against an in-context reading without round-tripping through a separate process. The mechanism is documented in [skills/fcot/SKILL.md](skills/fcot/SKILL.md#verification-context).
+
+This closes the gap between evaluation and production. The remaining open questions (verifier interface formalization, `.fcotrc` config cascade, investigation toolbelt, multi-verifier ensemble, verdict schema extension) are tracked in [issue #2](https://github.com/o3co/agent-skill-fcot/issues/2).
+
 ## Open questions
 
 [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) (Huang et al., 2023) demonstrates that intrinsic self-correction without external feedback tends to degrade performance. The qualitative observations above suggest that FCoT's pre-commitment mechanism produces a different dynamic — the dismissal conditions function as self-imposed evaluation criteria rather than open-ended self-doubt — but rigorous validation remains open.
