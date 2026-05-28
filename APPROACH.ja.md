@@ -87,6 +87,14 @@ FCoTの貢献は狭いが実在する: FNバイアスメカニズムを反論ご
 
 現在の評価プロトコルは3つすべてに対処: `/tmp` から別CLIプロセスで実行、`CLAUDE.md` ファイルを無効化、Controlには `--disable-slash-commands` を使用。詳細は [docs/examples/](docs/examples/README.ja.md) の実行プロトコルを参照。
 
+### 本番 verifier: 同じ保護を `/fcot` にも拡張
+
+上述の 80% 有効性を測定した評価プロトコルは、各 FCoT パスを **コンテキスト分離された CLI プロセス**で実行していた — 判断を生成したエージェントとは別のプロセス。一方、本番の `/fcot` スキルは最近までインプロセスで実行されており、判断を推論したエージェント自身が反論を列挙し棄却条件を検証していた。これは設計上のギャップ：ユーザー向けスキルが、評価で検証された構成と一致していなかった。
+
+スキルは現在、**Codex CLI を外部 verifier として既定**で使用する。起動は file-pipe プロトコル (`/tmp/codex-io/`) 経由、コンテキスト剥がしされた抽出バンドル（判断の verbatim 引用 + evidence pointer + 1 行ドメインヒント。会話履歴・兄弟仮説・先行推論は含めない）を渡す。Codex が利用不可な場合のみインプロセス検証に fallback し、その事実をユーザーに明示する。ユーザーは `FCOT_VERIFIER=in-process /fcot ...` で fallback パスを明示的に強制することもできる — Codex セットアップのデバッグや、別プロセスを介さず in-context での判定との照合に有用。メカニズムは [skills/fcot/SKILL.md](skills/fcot/SKILL.md#verification-context) を参照。
+
+これで評価と本番のギャップは解消する。残る未解決項目（verifier interface の形式化、`.fcotrc` config cascade、investigation toolbelt、multi-verifier ensemble、verdict schema 拡張）は [issue #2](https://github.com/o3co/agent-skill-fcot/issues/2) で追跡。
+
 ## 未解決の課題
 
 [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798)（Huang et al., 2023）は、外部フィードバックなしの内在的自己修正がパフォーマンスを低下させる傾向があることを示している。上記の定性的観察は、FCoTの事前コミットメントメカニズムが異なるダイナミクスを生むことを示唆している — 棄却条件が自由な自己懐疑ではなく自己賦課的な評価基準として機能する — が、厳密な検証は未解決のままである。
