@@ -66,9 +66,11 @@ FCoTなしの場合、AIはユーザーに同意する:
 Marketplace 対応の Claude Code を使っているなら、[o3co/agent-market](https://github.com/o3co/agent-market) marketplace 経由でインストールできる:
 
 ```text
-/plugin marketplace add o3co/agent-market
+/plugin marketplace add https://github.com/o3co/agent-market.git
 /plugin install fcot@agent-market
 ```
+
+URL の末尾 `.git` は必須。（Claude Code は docs 上、短い `owner/repo` 形式 — `o3co/agent-market` — も accept するが、環境によっては "Invalid marketplace source format" で reject されるため、URL 形式が確実。）
 
 これで他の o3co plugin（例: DPD）と一緒に FCoT が入り、`git` 経由で更新される。
 

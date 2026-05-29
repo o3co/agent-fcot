@@ -66,9 +66,11 @@ Across [15 examples](docs/examples/): **12 / 15 (80.0%)** effectiveness — FCoT
 If you have Claude Code with marketplace support, install via the [o3co/agent-market](https://github.com/o3co/agent-market) marketplace:
 
 ```text
-/plugin marketplace add o3co/agent-market
+/plugin marketplace add https://github.com/o3co/agent-market.git
 /plugin install fcot@agent-market
 ```
+
+The `.git` suffix on the URL is required. (Claude Code also accepts a shorter `owner/repo` form per its docs — `o3co/agent-market` — but some installs reject it with "Invalid marketplace source format"; the URL form works universally.)
 
 This adds FCoT alongside other o3co plugins (e.g. DPD) and tracks updates via `git`.
 
