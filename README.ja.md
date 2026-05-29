@@ -77,8 +77,8 @@ URL の末尾 `.git` は必須。（Claude Code は docs 上、短い `owner/rep
 ### 手動（シンボリックリンク）
 
 ```bash
-git clone https://github.com/o3co/agent-skill-fcot.git
-cd agent-skill-fcot
+git clone https://github.com/o3co/agent-fcot.git
+cd agent-fcot
 ./install.sh
 ```
 
@@ -116,7 +116,7 @@ AIが判断を下したり、ユーザーに同意した後に:
 
 ## フィードバック
 
-質問、アイデア、バグ報告は [Feedback & Discussion](https://github.com/y1o1/agent-skill-fcot/issues/1) へどうぞ。
+質問、アイデア、バグ報告は [Feedback & Discussion](https://github.com/o3co/agent-fcot/issues/1) へどうぞ。
 
 ## ライセンス
 

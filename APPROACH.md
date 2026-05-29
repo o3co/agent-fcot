@@ -93,7 +93,7 @@ The evaluation protocol that produced the 80% effectiveness result above ran eac
 
 The skill now defaults to **Codex CLI as an external verifier**, invoked via the file-pipe protocol (`/tmp/codex-io/`) with a context-stripped extraction bundle (verbatim claim quote + evidence pointers + one-line domain hint; no conversation history, sibling hypotheses, or prior reasoning). The same agent never both infers and falsifies a judgment unless Codex is unavailable, in which case the skill falls back to in-process verification and surfaces that fact to the user. Users can also force the fallback path explicitly with `FCOT_VERIFIER=in-process /fcot ...` — useful for debugging Codex setups, or for sanity-checking a verdict against an in-context reading without round-tripping through a separate process. The mechanism is documented in [skills/fcot/SKILL.md](skills/fcot/SKILL.md#verification-context).
 
-This closes the gap between evaluation and production. The remaining open questions (verifier interface formalization, `.fcotrc` config cascade, investigation toolbelt, multi-verifier ensemble, verdict schema extension) are tracked in [issue #2](https://github.com/o3co/agent-skill-fcot/issues/2).
+This closes the gap between evaluation and production. The remaining open questions (verifier interface formalization, `.fcotrc` config cascade, investigation toolbelt, multi-verifier ensemble, verdict schema extension) are tracked in [issue #2](https://github.com/o3co/agent-fcot/issues/2).
 
 ## Open questions
 

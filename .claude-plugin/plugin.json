@@ -5,8 +5,8 @@
     "name": "1o1 Co. Ltd.",
     "url": "https://1o1.co.jp/"
   },
-  "homepage": "https://github.com/o3co/agent-skill-fcot",
-  "repository": "https://github.com/o3co/agent-skill-fcot",
+  "homepage": "https://github.com/o3co/agent-fcot",
+  "repository": "https://github.com/o3co/agent-fcot",
   "license": "Apache-2.0",
   "keywords": ["fcot", "falsification", "anti-sycophancy", "skill", "reasoning-verification"]
 }

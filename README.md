@@ -77,8 +77,8 @@ This adds FCoT alongside other o3co plugins (e.g. DPD) and tracks updates via `g
 ### Manual (symlink)
 
 ```bash
-git clone https://github.com/o3co/agent-skill-fcot.git
-cd agent-skill-fcot
+git clone https://github.com/o3co/agent-fcot.git
+cd agent-fcot
 ./install.sh
 ```
 
@@ -116,7 +116,7 @@ See [APPROACH.md](APPROACH.md) for the theory (FN bias + Falsification + Chain o
 
 ## Feedback
 
-Questions, ideas, or bug reports? Post in [Feedback & Discussion](https://github.com/y1o1/agent-skill-fcot/issues/1).
+Questions, ideas, or bug reports? Post in [Feedback & Discussion](https://github.com/o3co/agent-fcot/issues/1).
 
 ## License
 

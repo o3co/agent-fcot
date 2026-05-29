@@ -93,7 +93,7 @@ FCoTの貢献は狭いが実在する: FNバイアスメカニズムを反論ご
 
 スキルは現在、**Codex CLI を外部 verifier として既定**で使用する。起動は file-pipe プロトコル (`/tmp/codex-io/`) 経由、コンテキスト剥がしされた抽出バンドル（判断の verbatim 引用 + evidence pointer + 1 行ドメインヒント。会話履歴・兄弟仮説・先行推論は含めない）を渡す。Codex が利用不可な場合のみインプロセス検証に fallback し、その事実をユーザーに明示する。ユーザーは `FCOT_VERIFIER=in-process /fcot ...` で fallback パスを明示的に強制することもできる — Codex セットアップのデバッグや、別プロセスを介さず in-context での判定との照合に有用。メカニズムは [skills/fcot/SKILL.md](skills/fcot/SKILL.md#verification-context) を参照。
 
-これで評価と本番のギャップは解消する。残る未解決項目（verifier interface の形式化、`.fcotrc` config cascade、investigation toolbelt、multi-verifier ensemble、verdict schema 拡張）は [issue #2](https://github.com/o3co/agent-skill-fcot/issues/2) で追跡。
+これで評価と本番のギャップは解消する。残る未解決項目（verifier interface の形式化、`.fcotrc` config cascade、investigation toolbelt、multi-verifier ensemble、verdict schema 拡張）は [issue #2](https://github.com/o3co/agent-fcot/issues/2) で追跡。
 
 ## 未解決の課題
 
